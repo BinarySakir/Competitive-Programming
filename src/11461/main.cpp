@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    int num1, num2, i_square2, i, kount = 0;
+    int num1, num2, i_square, i, kount = 0;
     double d_square;
 
     while(1){
@@ -14,8 +14,8 @@ int main(){
         }else{
             for(i = num1; i <= num2; i++){
                 d_square = sqrt(i);
-                i_square2 = d_square;
-                if(d_square == i_square2){
+                i_square = d_square;
+                if(d_square == i_square){
                     kount += 1;
                 }
             }
