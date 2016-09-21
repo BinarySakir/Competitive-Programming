@@ -32,11 +32,10 @@ int main(){
 				if(consumption > maximum) maximum = consumption;
 			}
 		}
+		cout << "Sequence " << kase << endl;
 		if(fused == 1){
-			cout << "Sequence " << kase << endl;
 			cout << "Fuse was blown." << endl << endl;
 		}else{
-			cout << "Sequence " << kase << endl;
 			cout << "Fuse was not blown." << endl;
 			cout << "Maximal power consumption was " << maximum << " amperes." << endl << endl;
 		}
