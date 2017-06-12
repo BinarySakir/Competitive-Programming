@@ -1,34 +1,37 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
-typedef long long LL;
+typedef unsigned long ul;
+
+ul cycle(ul n){
+    ul c = 1;
+    while(n != 1){
+        if(n%2 == 0) n/=2;
+        else n = 3*n + 1;
+        c += 1;
+    }
+    return c;
+}
 
 int main(){
-    LL i, rangeStart, rangeEnd, cycleLength, maxCycleLength, temp, rangeStartTemp, rangeEndTemp;
-    while(cin >> rangeStart >> rangeEnd){
-        rangeStartTemp = rangeStart;
-        rangeEndTemp = rangeEnd;
-        maxCycleLength = 0;
-        if(rangeStart > rangeEnd) swap(rangeStart, rangeEnd);
-        for(i = rangeStart; i <= rangeEnd; i++){
-            temp = i;
-            cycleLength = 1;
-            while(temp != 1){
-                if(temp % 2 == 0){
-                    temp = temp / 2;
-                }
-                else{
-                    temp = (3 * temp) + 1;
-                }
-                cycleLength++;
-            }
-            if(cycleLength > maxCycleLength){
-                maxCycleLength = cycleLength;
-            }
-        }
-        if(rangeStartTemp > rangeEndTemp) swap(rangeStart, rangeEnd);
-        cout << rangeStart << " " << rangeEnd << " " << maxCycleLength << endl;
+    ul i, j, s, p;
+    s = 0;
+    while(cin >> i >> j){
+	    if(i <= j){
+		    for(int k = i; k <= j; k++){
+		         p = cycle(k);
+		         if(p > s) s = p;
+		    }
+	    }else{
+		    for(int k = j; k <= i; k++){
+		    	p = cycle(k);
+		        if(p > s) s = p;
+		    }
+	    }
+	    cout << i << " " << j << " " << s << endl;
+	    s = 0;
     }
-    return 0;
 }
